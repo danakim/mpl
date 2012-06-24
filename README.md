@@ -1,12 +1,13 @@
 mpl
 ===
 
-`Wrapper script around mpc for easier last.fm integration and usage of MPD's last.fm stream loading capabilites.`
-`Your MPD daemon must configured to use last.fm.`
+Wrapper script around mpc for easier last.fm integration and usage of MPD's last.fm stream loading capabilites.
+Your MPD daemon must configured to use last.fm.
 
 Usage: mpl [option] [data] {optional_info} {number of tracks}
 
-    + option (mandatory) is one of: u|user
+    + option (mandatory) is one of:
+                                  u|user
                                   a|artist
                                   g|genre
                                   ut|usertags
