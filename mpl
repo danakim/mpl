@@ -22,7 +22,8 @@ help_function() { echo -e "
                                   g|genre
                                   ut|usertags
                                   gt|globaltags\n
-    data (mandatory) depends on the above given option and is one of: lastfm_username, artist_name, genre, lastfm_globaltag, lastfm_usertag\n
+    data (mandatory) depends on the above given option and is one of: lastfm_username, artist_name, genre, lastfm_globaltag, lastfm_usertag
+        NOTE: if the data consists of multiple words, please quote it, otherwise it may be considered as multiple arguments. Ex: mpl a \"The Doors\"\n
     optional_info (optional) is additional data given to further filter the above search and is one of:
                                   for lastfm_username: loved, personal, recommended, playlist
                                   for lastfm_usertags: tag
@@ -31,6 +32,10 @@ help_function() { echo -e "
     number_of_tracks (optional): the MPD last.fm plugin loads only 5 tracks by default for each call. If you want to load more tracks, supply
                                  a number as the last argument and it will multiply this by 5, thus loading 5 x n tracks. If you don't specify
                                  this number by default it will load 25 tracks.\n
+    Examples:
+    mpl artist Beatles 2
+    mpl user username recommended
+    mpl a \"Led Zeppelin\" fans 3
     "
     exit 1
 }
@@ -55,19 +60,19 @@ load_function() {
 
 case $1 in
     a|artist)
-        load_function artist $2 $3
+        load_function artist "$2" $3
         ;;
     u|user)
-        load_function user $2 $3
+        load_function user "$2" $3
         ;;
     ut|usertags)
-        load_function usertag $2 $3
+        load_function usertag "$2" $3
         ;;
     gt|globaltags)
-        load_function globaltag $2 $3
+        load_function globaltag "$2" $3
         ;;
     g|genre)
-        load_function genre $2 $3
+        load_function genre "$2" $3
         ;;
     *)
         help_function
